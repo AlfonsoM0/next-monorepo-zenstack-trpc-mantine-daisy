@@ -1,0 +1,53 @@
+{
+  "name": "@acme/db",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "echo pnpm with-env prisma studio",
+    "db:generate": "pnpm with-env prisma generate",
+    "db:push": "pnpm with-env prisma db push",
+    "db:studio": "pnpm with-env prisma studio",
+    "db:seed": "pnpm with-env prisma db seed",
+    "postinstall": "prisma generate",
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --",
+    "zen:generate": "npx zenstack generate --schema ./zmodels/schema.zmodel",
+    "zen:up": "pnpm zen:generate && pnpm db:push"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.8.1",
+    "@zenstackhq/runtime": "^1.7.0",
+    "@zenstackhq/server": "^1.7.0"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "^0.2.0",
+    "@acme/prettier-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
+    "@faker-js/faker": "^8.2.0",
+    "@types/node": "^20.11.5",
+    "@zenstackhq/trpc": "^1.7.0",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^8.51.0",
+    "prettier": "^3.2.4",
+    "prisma": "^5.8.1",
+    "tsx": "^3.14.0",
+    "typescript": "^5.3.3",
+    "zenstack": "^1.7.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
+  },
+  "prettier": "@acme/prettier-config",
+  "prisma": {
+    "seed": "tsx ./prisma/seed.ts"
+  }
+}

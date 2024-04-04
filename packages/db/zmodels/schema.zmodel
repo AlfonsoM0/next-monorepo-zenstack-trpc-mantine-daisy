@@ -1,0 +1,3 @@
+import './base/config.zmodel'
+import './base/auth.zmodel'
+import './post.zmodel'
